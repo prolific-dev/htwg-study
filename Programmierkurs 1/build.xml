@@ -1,0 +1,79 @@
+<?xml version="1.0"?> 
+<!--
+    build-cygwin.xml
+    Autor: H.Drachenfels
+    Erstellt am: 26.9.2018
+ -->
+<project default="compile">
+    <property name="package" value="*"/>
+
+    <!-- checkstyle settings -->
+    <property name="checkstyle.dir" value="/opt/checkstyle/"/>
+    <property name="checkstyle.jar"
+              value="${checkstyle.dir}checkstyle-8.12-all.jar"/>
+    <property name="checkstyle.xml"
+              value="${user.home}/merkur/Drachenfels/prog/prog_checks.xml"/>
+    <taskdef resource="com/puppycrawl/tools/checkstyle/ant/checkstyle-ant-task.properties"
+             classpath="${checkstyle.jar}"/>
+
+    <!-- spotbugs settings -->
+    <property name="spotbugs.home" value="/opt/spotbugs/"/>
+    <property name="spotbugs.output" value="xml"/>
+    <property name="spotbugs.exclude"
+              value="${user.home}/merkur/Drachenfels/prog/exclude_filter.xml"/>
+    <taskdef resource="edu/umd/cs/findbugs/anttask/tasks.properties"
+             classpath="${spotbugs.home}lib/spotbugs-ant.jar"/>
+
+    <!-- target section -->
+    <target name="compile">
+        <javac debug="on" srcdir="." destdir="." sourcepath=""
+               listfiles="true" includeantruntime="false">
+            <include name="${package}/*.java"/>
+        </javac>
+    </target>
+  
+    <target name="clean">
+        <delete>
+            <fileset dir="." includes="${package}/*.class"/>
+        </delete>
+    </target>
+
+    <target name="style">
+        <checkstyle config="${checkstyle.xml}">
+            <fileset dir="." includes="${package}/*.java"/>
+        </checkstyle>
+    </target>
+
+    <target name="bugs" depends="compile">
+        <spotbugs home="${spotbugs.home}"
+                  output="${spotbugs.output}"
+                  outputFile="bugs.${spotbugs.output}"
+                  excludeFilter="${spotbugs.exclude}">
+            <sourcePath path="."/>
+            <auxClassPath path="."/>
+            <fileset dir="." includes="${package}/*.class"/>
+        </spotbugs>
+    </target>
+
+    <target name="cleanbugs">
+        <delete file="bugs.${spotbugs.output}"/>
+    </target>
+
+    <target name="doc">
+        <javadoc additionalparam="-html5"
+                 destdir="doc"
+                 linksource="yes"
+                 author="true"
+                 version="true"
+                 windowtitle="Programmiertechnik 1"
+                 doctitle="Programmiertechnik 1 - AIN/1">
+            <packageset dir="." includes="${package}" />
+        </javadoc>
+    </target>
+
+    <target name="cleandoc">
+        <delete dir="doc"/>
+    </target>
+
+</project>
+
