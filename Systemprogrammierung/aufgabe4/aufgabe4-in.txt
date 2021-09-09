@@ -1,0 +1,8 @@
+benotetes_Fach_A 23
+benotetes_Fach_A 17
+benotetes_Fach_B 50
+eigenartiges_Fach_C 99
+unbenotetes_Fach_D B
+unbenotetesFachE N
+eigenartiges_Fach_C X
+benotetes_Fach_B 40

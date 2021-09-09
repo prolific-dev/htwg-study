@@ -1,0 +1,7 @@
+Notenspiegel:
+benotetes Fach B    	4,0
+eigenartiges Fach C 	Fehler: X
+unbenotetesFachE    	nicht bestanden
+unbenotetes Fach D  	bestanden
+eigenartiges Fach C 	Fehler: 99
+benotetes Fach A    	1,7
