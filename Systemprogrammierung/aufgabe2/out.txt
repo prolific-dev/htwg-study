@@ -1,0 +1,1 @@
+Anzahl zu sortierender Werte eingeben: 0 ganze Zahlen eingeben: 

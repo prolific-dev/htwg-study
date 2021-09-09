@@ -1,0 +1,195 @@
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2$ ./bubblesort 10
+Anzahl zu sortierender Werte eingeben: 5
+5 ganze Zahlen eingeben: 3
+4
+6
+5
+1
+1
+3
+4
+5
+6
+
+
+
+
+
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2$ valgrind ./bubblesort 10
+==13289== Memcheck, a memory error detector
+==13289== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==13289== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==13289== Command: ./bubblesort 10
+==13289== 
+Anzahl zu sortierender Werte eingeben: 5
+5 ganze Zahlen eingeben: 3
+4
+6
+5
+1
+1
+3
+4
+5
+6
+==13289== 
+==13289== HEAP SUMMARY:
+==13289==     in use at exit: 20 bytes in 1 blocks
+==13289==   total heap usage: 3 allocs, 2 frees, 2,068 bytes allocated
+==13289== 
+==13289== LEAK SUMMARY:
+==13289==    definitely lost: 20 bytes in 1 blocks
+==13289==    indirectly lost: 0 bytes in 0 blocks
+==13289==      possibly lost: 0 bytes in 0 blocks
+==13289==    still reachable: 0 bytes in 0 blocks
+==13289==         suppressed: 0 bytes in 0 blocks
+==13289== Rerun with --leak-check=full to see details of leaked memory
+==13289== 
+==13289== For counts of detected and suppressed errors, rerun with: -v
+==13289== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+
+
+
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2$ cppcheck --enable=all --std=c11 bubblesort.c
+Checking bubblesort.c ...
+(information) Cppcheck cannot find all the include files (use --check-config for details)
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2$ ./bubblesort 1000 < /dev/null | tail -1000 > out.txt
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2$ sort -n out.txt | diff - out.txt 
+1c1
+< Anzahl zu sortierender Werte eingeben: 0 ganze Zahlen eingeben: 
+---
+> Anzahl zu sortierender Werte eingeben: 0 ganze Zahlen eingeben: 
+\ Kein Zeilenumbruch am Dateiende.
+
+
+
+
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2$ man tail
+
+
+
+
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2$ man sort
+
+
+
+
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2$ man diff
+
+
+
+
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2$ ddd bubblesort&
+[1] 13366
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2$ Warning: Cannot convert string "-*-lucidatypewriter-medium-r-*-*-*-120-*-*-*-*-iso8859-*" to type FontStruct
+(Annoyed?  Try 'Edit->Preferences->General->Suppress X Warnings'!)
+Warning: Cannot convert string "-*-lucidatypewriter-bold-r-*-*-*-120-*-*-*-*-iso8859-*" to type FontStruct
+Warning: Could not load font "-*-lucidatypewriter-medium-*-*-*-*-120-*-*-*-*-iso8859-*", using font "fixed" instead
+Warning: Could not load font "-*-lucidatypewriter-medium-r-*-*-*-120-*-*-*-*-iso8859-*", using font "fixed" instead
+Warning: Could not load font "-*-lucidatypewriter-bold-*-*-*-*-120-*-*-*-*-iso8859-*", using font "fixed" instead
+^C
+[1]+  Fertig                  ddd bubblesort
+
+
+
+
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2$ time java Bubblesort 1000 < /dev/null > /dev/null
+Error: Could not find or load main class Bubblesort
+Caused by: java.lang.ClassNotFoundException: Bubblesort
+
+real	0m0,172s
+user	0m0,189s
+sys	0m0,028s
+
+
+
+
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2$ time ./bubblesort 1000 < /dev/null > /dev/null 
+
+real	0m0,002s
+user	0m0,002s
+sys	0m0,001s
+
+
+
+
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2$ time java Bubblesort 10000 < /dev/null > /dev/null 
+Error: Could not find or load main class Bubblesort
+Caused by: java.lang.ClassNotFoundException: Bubblesort
+
+real	0m0,153s
+user	0m0,195s
+sys	0m0,012s
+
+
+
+
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2$ time ./bubblesort 10000 < /dev/null > /dev/null 
+
+real	0m1,646s
+user	0m1,614s
+sys	0m0,032s
+
+
+
+
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2$ time java Bubblesort 100000 < /dev/null > /dev/null 
+Error: Could not find or load main class Bubblesort
+Caused by: java.lang.ClassNotFoundException: Bubblesort
+
+real	0m0,157s
+user	0m0,177s
+sys	0m0,038s
+
+
+
+
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2$ time ./bubblesort 100000 < /dev/null > /dev/null 
+
+real	0m1,635s
+user	0m1,599s
+sys	0m0,028s
+
+
+
+
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2$ make "CC=gcc -g -O" clean all
+rm -f bubblesort bubblesort.o
+gcc -g -O -g -W -Wall -Wvla -std=c11 -pedantic    bubblesort.c   -o bubblesort
+bubblesort.c: In function ‘main’:
+bubblesort.c:6:14: warning: unused parameter ‘argc’ [-Wunused-parameter]
+ int main(int argc, char* argv[])
+              ^~~~
+bubblesort.c:6:26: warning: unused parameter ‘argv’ [-Wunused-parameter]
+ int main(int argc, char* argv[])
+                          ^~~~
+bubblesort.c:12:5: warning: ignoring return value of ‘scanf’, declared with attribute warn_unused_result [-Wunused-result]
+     scanf("%d", &arraysize);
+     ^~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2$ astyle -p -H --style=ansi bubblesort.c
+Formatiert   /home/pwner/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2/bubblesort.c
+
+
+
+
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2$ 

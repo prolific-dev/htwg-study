@@ -1,0 +1,105 @@
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe6$ make filecopy
+gcc -g -W -Wall -ansi -pedantic    filecopy.c   -o filecopy
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe6$ make filesize
+gcc -g -W -Wall -ansi -pedantic    filesize.c   -o filesize
+
+
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe6$ cppcheck --enable=all --std=c11 filesize.c
+Checking filesize.c ...
+(information) Cppcheck cannot find all the include files (use --check-config for details)
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe6$ cppcheck --enable=all --std=c11 filecopy.c
+Checking filecopy.c ...
+(information) Cppcheck cannot find all the include files (use --check-config for details)
+
+
+
+
+
+
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe6$ export LC_MESSAGES=C
+
+DAVOR WAR DIE FEHLERMELDUNG DEUTSCH!!!
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe6$ ls -l xxx *
+ls: cannot access 'xxx': No such file or directory
+-rw-rw-r-- 1 pwner pwner   752 Jun 27 12:46 aufgabe6.protokoll.txt
+-rwxrwxr-x 1 pwner pwner 16456 Jun 27 12:44 filecopy
+-rw-r--r-- 1 pwner pwner  2139 Jun 28  2018 filecopy.c
+-rwxrwxr-x 1 pwner pwner 11808 Jun 27 12:44 filesize
+-rw-r--r-- 1 pwner pwner   572 Jun 28  2018 filesize.c
+-rw-r--r-- 1 pwner pwner   146 Jun 28  2018 Makefile
+-rw-r--r-- 1 pwner pwner  2139 Jun 28  2018 test.c
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe6$ ./filesize xxx *
+xxx: No such file or directory
+Größe: 752 Bytes	Datei: aufgabe6.protokoll.txt
+Größe: 16456 Bytes	Datei: filecopy
+Größe: 2139 Bytes	Datei: filecopy.c
+Größe: 11808 Bytes	Datei: filesize
+Größe: 572 Bytes	Datei: filesize.c
+Größe: 146 Bytes	Datei: Makefile
+Größe: 2139 Bytes	Datei: test.c
+
+
+
+
+
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe6$ ./filecopy filecopy.c filecopy-kopie.c
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe6$ ls
+aufgabe6.protokoll.txt  filecopy  filecopy.c  filecopy-kopie.c  filesize  filesize.c  Makefile  test.c
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe6$ diff filecopy.c filecopy-kopie.c 
+
+
+Keine Quelldatei:
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe6$ ./filecopy filecopy123.c filecopy123-kopie.c
+Quelle filecopy123.c kann nicht geoeffnet werden (errno 2: Datei oder Verzeichnis nicht gefunden)
+
+
+Kein Leserecht:
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe6$ chmod -r filecopy.
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe6$ ./filecopy filecopy.c filecopy-kopie.c
+Quelle filecopy.c kann nicht geoeffnet werden (errno 13: Keine Berechtigung)
+
+
+Zieldatei existiert bereits:
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe6$ ./filecopy filecopy.c filecopy-kopie.c
+Ziel filecopy-kopie.c kann nicht erzeugt werden (errno 17: Die Datei existiert bereits)
+
+
+Kein Schreibrecht:
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe6$ chmod -w aufgabe6/
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen$ ./aufgabe6/filecopy aufgabe6/filecopy.c aufgabe6/filecopy-kopie2.c
+Ziel aufgabe6/filecopy-kopie2.c kann nicht erzeugt werden (errno 13: Keine Berechtigung)
+
+
+
+
+
+
+pwner@pwner-pc:~$ cd
+pwner@pwner-pc:~$ mkdir tmp
+pwner@pwner-pc:~$ cd tmp/
+
+
+
+
+
+
+
+
+pwner@pwner-pc:~/Studium/Systemprogrammierung/sypr-uebungen/aufgabe6$ make "CC=gcc -g" filesize
+gcc -g -W -Wall -ansi -pedantic    filesize.c   -o filesize
+
+
+
+
+
